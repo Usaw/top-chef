@@ -5,8 +5,15 @@ var cheerio = require('cheerio');
 var app     = express();
 
 urlPage = 'https://www.lafourchette.com/recherche/autocomplete?searchText=paul%20bocuse&localeCode=fr';
+headers = requests.utils.default_headers()
+headers.update(
+    {
+        'User-Agent': 'My User Agent 1.0',
+    }
+)
+//headers = 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; …) Gecko/20100101 Firefox/58.0';
 console.log("first step");
-request(urlPage, function(error, response, html){
+request(urlPage, headers=headers, function(error, response, html){
     if(!error){
         console.log("no error");
 
