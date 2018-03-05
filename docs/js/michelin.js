@@ -49,13 +49,13 @@ async function WriteJSON()
     var html = await data.text();
     var $ = await cheerio.load(html);
 
-    var title = $(".poi_intro-display-title").text().trim();
+    var title = $(".poi_intro-display-title").first().text().trim();
     json.title = title;
 
-    var address = $(".thoroughfare").text().trim();
+    var address = $(".thoroughfare").first().text().trim();
     json.address = address;
 
-    var postCode = $(".postal-code").text().trim();
+    var postCode = $(".postal-code").first().text().trim();
     json.postCode = postCode;
 
     fs.appendFile('output.json', JSON.stringify(json)+"\r\n", function(err){
